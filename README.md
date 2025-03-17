@@ -56,8 +56,9 @@ DATA SCHEMAS:
 ## NICE TO HAVES <a name="nice"></a>
 
 ## SPIKE DOC <a name="spike"></a>
+- [ ] readme table style does not work on github
 
-<style>
+<!-- <style>
   table{
     border: 6px solid black;
     width: 100%;
@@ -89,4 +90,4 @@ DATA SCHEMAS:
     color: white;
     /* width: 30%; */
   }
-</style>
+</style> -->
