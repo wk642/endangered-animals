@@ -2,7 +2,27 @@
 ###### attribution this typewriting animation to :
 - [ ] [Readme Typing SVG](https://readme-typing-svg.demolab.com/demo/?weight=600&size=30&pause=5000&center=true&vCenter=true&multiline=true&width=500&lines=ENDAGERED+ANIMAL+SIGHTING+TRACKER)
 - [ ] [Readme Typing SVG gitHub](https://github.com/DenverCoder1/readme-typing-svg?tab=readme-ov-file)
+
+attribution to font color in this readme:
+- [ ] [Markdown color text](https://github.com/orgs/community/discussions/31570)
 ## TABLE OF CONTENTS 
+1. [OBJECTIVES](#objectives)
+2. [PREREQUISITES](#prerequisites)
+3. [DEMO](#demo)
+4. [SETUP INSTRUCTIONS](#setup)
+5. [MY JOURNEY](#journey)
+6. [NICE TO HAVES](#nice)
+7. [SPIKE DOC](#spike)
+
+## OBJECTIVES <a name="objctivies"></a>
+This app is going to help scientists track sightings of endangered animals.
+
+## PREREQUISITES <a name="prerequisites"></a>
+- [ ] psql
+- [ ] 
+## DEMO <a name="demo"></a>
+
+## SETUP INSTRUCTIONS <a name="setup"></a>
 1. In your terminal `cd` into the location you want to clone my project in
 2. Type: `git clone https://github.com/wk642/endangered-animals.git`
 3. Go into my folder `cd endagered-animals.git`
@@ -15,4 +35,11 @@
 8. Install npm `npm install`
 9. To make sure that you can run the front end `npm run dev`
 
+## MY JOURNEY <a name="journey"></a>
+- [ ] Create app using REACT / VITE 
+- [ ] Install concurrently and set it up
+- [ ] Have a seed file set up
 
+## NICE TO HAVES <a name="nice"></a>
+
+## SPIKE DOC <a name="spike"></a>
