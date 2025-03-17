@@ -40,14 +40,18 @@ This app is going to help scientists track sightings of endangered animals.
 ## MY JOURNEY <a name="journey"></a>
 - [ ] Create app using REACT / VITE / [JEST](https://gist.github.com/wk642/502cf733b63686c07140e9a84631edc4)
 - [ ] Install concurrently and set it up
-- [ ] Have a seed file set up
+- [ ] Have a pg_dump file named db.js set up
 
 DATA SCHEMAS: 
-| | SPIECES | |
-| --- | ------ | --- |
-|  | NAME | TYPE |
-| - [ ] | id |  test | 
-
+| SPIECES | INDIVIDUALS | SIGHTINGS|
+| --- | --- | ---|
+| `id` : Primary Key, Serial |`id` : Primary Key, Serial | `id` : Primary Key, Serial |
+| `common_name` : VARCHAR | `individual_nickname` : VARCHAR | `sighting_date_time` : DATETIME|
+| `scientific_name` : VARCHAR | `speicies` : VARCHAR | `individually_seen` : BOOLEAN|
+|  `number_living_in_the_wild` : Number | `individuals_record_creation_timestamp` : timestamp [ (p) ] with time zone | `sighting_location` : VARCHAR |
+| `conservation_status_code` : VARCHAR |  | `animal_health` : BOOLEAN|
+| `species_record_creation_timestamp` : timestamp [ (p) ] with time zone | |`sighter_email` : VARCHAR |
+| | | `sightings_record_creation_timestamp` : timestamp [ (p) ] with time zone |
 
 ## NICE TO HAVES <a name="nice"></a>
 
@@ -55,10 +59,34 @@ DATA SCHEMAS:
 
 <style>
   table{
-  border: 8px solid black;
+    border: 6px solid black;
+    width: 100%;
   }
-  th{
+  th:nth-child(1){
     background-color: blue;
     justify-content: center;
+  }
+  th:nth-child(2){
+    background-color: green;
+    justify-content: center;
+  }
+  th:nth-child(3){
+    background-color: red;
+    justify-content: center;
+  }
+  td:nth-child(1){
+    background-color: #000080;
+    color: white;
+    /* width: 30%; */
+  }
+  td:nth-child(2){
+    background-color: #006400;
+    color: white;
+    /* width: 30%; */
+  }
+  td:nth-child(3){
+    background-color: #8B0000;
+    color: white;
+    /* width: 30%; */
   }
 </style>
