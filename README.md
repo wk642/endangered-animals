@@ -5,6 +5,8 @@
 
 attribution to font color in this readme:
 - [ ] [Markdown color text](https://github.com/orgs/community/discussions/31570)
+- [ ] [CSS in markdown](https://lifelongprogrammer.blogspot.com/2019/01/how-to-style-markdown-with-css.html)
+
 ## TABLE OF CONTENTS 
 1. [OBJECTIVES](#objectives)
 2. [PREREQUISITES](#prerequisites)
@@ -36,10 +38,27 @@ This app is going to help scientists track sightings of endangered animals.
 9. To make sure that you can run the front end `npm run dev`
 
 ## MY JOURNEY <a name="journey"></a>
-- [ ] Create app using REACT / VITE 
+- [ ] Create app using REACT / VITE / [JEST](https://gist.github.com/wk642/502cf733b63686c07140e9a84631edc4)
 - [ ] Install concurrently and set it up
 - [ ] Have a seed file set up
+
+DATA SCHEMAS: 
+| | SPIECES | |
+| --- | ------ | --- |
+|  | NAME | TYPE |
+| [ ] | id |  test | 
+
 
 ## NICE TO HAVES <a name="nice"></a>
 
 ## SPIKE DOC <a name="spike"></a>
+
+<style>
+  table{
+  border: 8px solid black;
+  }
+  th{
+    background-color: blue;
+    justify-content: center;
+  }
+</style>
