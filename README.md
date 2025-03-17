@@ -46,7 +46,7 @@ DATA SCHEMAS:
 | | SPIECES | |
 | --- | ------ | --- |
 |  | NAME | TYPE |
-| [ ] | id |  test | 
+| - [ ] | id |  test | 
 
 
 ## NICE TO HAVES <a name="nice"></a>
