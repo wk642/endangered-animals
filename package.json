@@ -2,17 +2,21 @@
   "name": "endangered-animals",
   "private": true,
   "version": "0.0.0",
-    "type": "module",
-    "main": "main.jsx",
-    "scripts": {
-      "dev": "vite",
-      "build": "vite build",
-      "lint": "eslint .",
-      "preview": "vite preview",
-      "test": "jest"
+  "type": "module",
+  "main": "main.jsx",
+  "scripts": {
+    "server": "nodemon server/server.js",
+    "client": "vite",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "jest"
   },
   "dependencies": {
     "concurrently": "^9.1.2",
+    "cor": "^0.0.0",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "nodemon": "^3.1.9",
     "react": "^19.0.0",

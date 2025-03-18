@@ -17,11 +17,14 @@ attribution to font color in this readme:
 7. [SPIKE DOC](#spike)
 
 ## OBJECTIVES <a name="objctivies"></a>
-This app is going to help scientists track sightings of endangered animals.
+This app is going to help scientists track sightings of endangered animals. There will be a tracker of different spieces, and it's individuals plus the sightings of the endangered animals.
 
 ## PREREQUISITES <a name="prerequisites"></a>
 - [ ] psql
-- [ ] 
+- [ ] express
+- [ ] concurrenlty
+- [ ] testing
+- [ ] SQL
 ## DEMO <a name="demo"></a>
 
 ## SETUP INSTRUCTIONS <a name="setup"></a>
@@ -38,25 +41,47 @@ This app is going to help scientists track sightings of endangered animals.
 9. To make sure that you can run the front end `npm run dev`
 
 ## MY JOURNEY <a name="journey"></a>
-- [ ] Create app using REACT / VITE / [JEST](https://gist.github.com/wk642/502cf733b63686c07140e9a84631edc4)
-- [ ] Install concurrently and set it up
+- [x] Create app using REACT / VITE / [JEST](https://gist.github.com/wk642/502cf733b63686c07140e9a84631edc4)
+- [ ] Install the following
+  - [x] npm
+  - [x] express
+  - [x] nodemon
+  - [x] concurrently
+  - [x] cors
+  - [ ] pg 
 - [ ] Have a pg_dump file named db.js set up
 
-DATA SCHEMAS: 
+- [ ] DATA SCHEMAS: 
 | SPIECES | INDIVIDUALS | SIGHTINGS|
 | --- | --- | ---|
 | `id` : Primary Key, Serial |`id` : Primary Key, Serial | `id` : Primary Key, Serial |
 | `common_name` : VARCHAR | `individual_nickname` : VARCHAR | `sighting_date_time` : DATETIME|
 | `scientific_name` : VARCHAR | `speicies` : VARCHAR | `individually_seen` : BOOLEAN|
-|  `number_living_in_the_wild` : Number | `individuals_record_creation_timestamp` : timestamp [ (p) ] with time zone | `sighting_location` : VARCHAR |
-| `conservation_status_code` : VARCHAR |  | `animal_health` : BOOLEAN|
+|  `population` : Number | `individuals_record_creation_timestamp` : timestamp [ (p) ] with time zone | `sighting_location` : VARCHAR |
+| `conservation_code` : VARCHAR |  | `animal_health` : BOOLEAN|
 | `species_record_creation_timestamp` : timestamp [ (p) ] with time zone | |`sighter_email` : VARCHAR |
 | | | `sightings_record_creation_timestamp` : timestamp [ (p) ] with time zone |
+
+- [ ] Base database will have at least: 
+  - [ ] 3 animal species 
+  - [ ] 2 individuals of each species
+  - [ ] least 5 animal sightings.
+
+- [ ] Components:
+  - [ ] NewSightingForm
+  - [ ] NewIndividualForm
+  - [ ] NewSpeiciesForm
+
+- [ ] Routes:
+  - [ ] GET - displaying data
+  - [ ] POST - when adding from forms
+  - [ ] DELETE
 
 ## NICE TO HAVES <a name="nice"></a>
 
 ## SPIKE DOC <a name="spike"></a>
 - [ ] readme table style does not work on github
+- [ ] does psql database come with automatic timestamps already
 
 <!-- <style>
   table{
