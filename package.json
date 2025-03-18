@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "main": "main.jsx",
+  "main": "./client/src/main.jsx",
   "scripts": {
     "server": "nodemon server/server.js",
     "client": "vite",
