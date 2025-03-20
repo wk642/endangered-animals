@@ -42,6 +42,15 @@ app.get('/individuals', async (req,res) => {
 })
 
 // display all the sightings
+app.get('/sightings', async (req,res) => {
+  try {
+    const sightings = await db.any('SELECT * FROM sightings');
+    res.json(sightings);
+  } catch (error) {
+    console.error("Error in getting all the sightings");
+    res.status(500).json({error:'Error in getting all the sightings'})
+  }
+})
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
