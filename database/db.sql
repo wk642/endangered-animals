@@ -63,4 +63,10 @@ INSERT INTO individuals (individual_nickname, species_id) VALUES
 ('Camo Crawly', (SELECT id FROM species WHERE common_name = 'Amphibians')),
 ('Frogity frog frog', (SELECT id FROM species WHERE common_name = 'Amphibians'));
 
--- sightings
+-- sightings - 5 animal sightings
+INSERT INTO sightings (sighting_date_time, sighted_animal_id, animal_health, sighter_email) VALUES
+('2025-02-02 09:43:00', (SELECT id FROM individuals WHERE individual_nickname = 'Bear Bear'), TRUE, 'scientist1@sightings.com'),
+('2025-02-19 12:36:00', (SELECT id FROM individuals WHERE individual_nickname = 'Floppy Dino'), TRUE, 'scientist1@sightings.com'),
+('2025-03-02 18:12:00', (SELECT id FROM individuals WHERE individual_nickname = 'Camo Crawly'), FALSE, 'scientist2@sightings.com'),
+('2025-03-06 20:16:00', (SELECT id FROM individuals WHERE individual_nickname = 'Dolphieeeee'), TRUE, 'scientist3@sightings.com'),
+('2025-03-17 07:03:00', (SELECT id FROM individuals WHERE individual_nickname = 'Tweet Tweet'), TRUE, 'scientist4@sightings.com');
