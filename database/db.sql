@@ -1,0 +1,72 @@
+-- create database
+-- This drop is a little bit of an error handling, incase there was already this database we are going to drop it and create one. 
+DROP DATABASE "sightingsDB";
+CREATE DATABASE "sightingsDB";
+
+-- connecting to the database (if this is skipped, I did not know we can create tables outside of the database, but it sure did)
+\c "sightingsDB";
+
+-- creating the tables
+-- species table
+CREATE TABLE IF NOT EXISTS species (
+  -- After speaking with Kaylah about security, decided to randomly generate the id instead using UUID to generate a random id instead (https://starkandwayne.com/blog/uuid-primary-keys-in-postgresql/)
+  -- id SERIAL PRIMARY KEY,
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  common_name VARCHAR(255),
+  scientific_name VARCHAR(255),
+  species_population INTEGER,
+  conservation_code VARCHAR(10),
+  -- Automatic initialization and updating to the current date and time can be specified using DEFAULT CURRENT_TIMESTAMP (https://www.w3schools.com/sql/sql_datatypes.asp)
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- individuals table
+CREATE TABLE IF NOT EXISTS individuals (
+  -- id SERIAL PRIMARY KEY NOT NULL,
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  individual_nickname VARCHAR (255),
+  -- this would be a foreign key 
+  species_id UUID REFERENCES species(id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- sightings table
+CREATE TABLE IF NOT EXISTS sightings (
+  -- id SERIAL PRIMARY KEY,
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  sighting_date_time TIMESTAMP,
+  sighted_animal_id UUID REFERENCES individuals(id),
+  animal_health BOOLEAN,
+  sighter_email VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- info from https://www.iucnredlist.org/resources/summary-statistics
+-- inserts into tables
+-- species - at least 3 
+INSERT INTO species (common_name, scientific_name, species_population, conservation_code) VALUES
+('Mammals', 'Felis catus', 6736, 'CR'),
+('Birds', 'Turdus migratorius', 11195, 'EN'),
+('Amphibians', 'Lithobates catesbeianus', 8776, 'CR');
+
+
+-- individuals
+-- 2 for each species
+INSERT INTO individuals (individual_nickname, species_id) VALUES
+-- Mammals
+('Bear Bear', (SELECT id FROM species WHERE common_name = 'Mammals')),
+('Dolphieeeee', (SELECT id FROM species WHERE common_name = 'Mammals')),
+-- Birds
+('Floppy Dino', (SELECT id FROM species WHERE common_name = 'Birds')),
+('Tweet Tweet', (SELECT id FROM species WHERE common_name = 'Birds')),
+-- Amphibians
+('Camo Crawly', (SELECT id FROM species WHERE common_name = 'Amphibians')),
+('Frogity frog frog', (SELECT id FROM species WHERE common_name = 'Amphibians'));
+
+-- sightings - 5 animal sightings
+INSERT INTO sightings (sighting_date_time, sighted_animal_id, animal_health, sighter_email) VALUES
+('2025-02-02 09:43:00', (SELECT id FROM individuals WHERE individual_nickname = 'Bear Bear'), TRUE, 'scientist1@sightings.com'),
+('2025-02-19 12:36:00', (SELECT id FROM individuals WHERE individual_nickname = 'Floppy Dino'), TRUE, 'scientist1@sightings.com'),
+('2025-03-02 18:12:00', (SELECT id FROM individuals WHERE individual_nickname = 'Camo Crawly'), FALSE, 'scientist2@sightings.com'),
+('2025-03-06 20:16:00', (SELECT id FROM individuals WHERE individual_nickname = 'Dolphieeeee'), TRUE, 'scientist3@sightings.com'),
+('2025-03-17 07:03:00', (SELECT id FROM individuals WHERE individual_nickname = 'Tweet Tweet'), TRUE, 'scientist4@sightings.com');
