@@ -33,12 +33,19 @@ This app is going to help scientists track sightings of endangered animals. Ther
 3. Go into my folder `cd endagered-animals.git`
 4. Remove my github info `rm -rf .git`
 5. Remove the connection
-  5.a. If you see a fetch and push link as `https://github.com/wk642/endangered-animals.git` then you need to type `git remote remove origin main`
+  5.a. If you see a fetch and push link as `https://github.com/wk642/endangered-animals.git` then you need to type `git remote remove origin main`  
   5.b. If you want to connect to your own github, this is where you would do it, if not you you can ignore step 5.b.
 6. If you're using vscode, in  your teminal type `code .`
 7. Now that you are in vscode, open up the termianl or press `command + j`
 8. Install npm `npm install`
-9. To make sure that you can run the front end `npm run dev`
+9. Now let's create the user and password in postgres. 
+  - [ ] Replace username, with a username you would like to use on both userame.
+  - [ ] Replace password with a password you like to use. 
+```
+CREATE USER username WITH PASSWORD 'password';
+GRANT ALL PRIVILEGES ON DATABASE endangered-animals-sightings-db TO username;
+```
+9. To make sure that you can run the app `npm run dev`
 
 ## MY JOURNEY <a name="journey"></a>
 - [x] Create app using REACT / VITE / [JEST](https://gist.github.com/wk642/502cf733b63686c07140e9a84631edc4)
@@ -48,19 +55,19 @@ This app is going to help scientists track sightings of endangered animals. Ther
   - [x] nodemon
   - [x] concurrently
   - [x] cors
-  - [ ] pg 
 - [ ] Have a pg_dump file named db.js set up
 
 - [ ] DATA SCHEMAS: 
+
 | SPIECES | INDIVIDUALS | SIGHTINGS|
 | --- | --- | ---|
 | `id` : Primary Key, Serial |`id` : Primary Key, Serial | `id` : Primary Key, Serial |
 | `common_name` : VARCHAR | `individual_nickname` : VARCHAR | `sighting_date_time` : DATETIME|
 | `scientific_name` : VARCHAR | `speicies` : VARCHAR | `individually_seen` : BOOLEAN|
-|  `population` : Number | `individuals_record_creation_timestamp` : timestamp [ (p) ] with time zone | `sighting_location` : VARCHAR |
+|  `species_population` : Number | `created_at` : timestamp [ (p) ] with time zone | `sighting_location` : VARCHAR |
 | `conservation_code` : VARCHAR |  | `animal_health` : BOOLEAN|
-| `species_record_creation_timestamp` : timestamp [ (p) ] with time zone | |`sighter_email` : VARCHAR |
-| | | `sightings_record_creation_timestamp` : timestamp [ (p) ] with time zone |
+| `created_at` : timestamp [ (p) ] with time zone | |`sighter_email` : VARCHAR |
+| | | `created_at` : timestamp [ (p) ] with time zone |
 
 - [ ] Base database will have at least: 
   - [ ] 3 animal species 
@@ -83,7 +90,7 @@ This app is going to help scientists track sightings of endangered animals. Ther
 - [ ] readme table style does not work on github
 - [ ] does psql database come with automatic timestamps already
 
-<!-- <style>
+<style>
   table{
     border: 6px solid black;
     width: 100%;
@@ -115,4 +122,4 @@ This app is going to help scientists track sightings of endangered animals. Ther
     color: white;
     /* width: 30%; */
   }
-</style> -->
+</style> 
