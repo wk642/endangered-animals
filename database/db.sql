@@ -45,13 +45,22 @@ CREATE TABLE IF NOT EXISTS sightings (
 -- inserts into tables
 -- species - at least 3 
 INSERT INTO species (common_name, scientific_name, species_population, conservation_code) VALUES
-('Mammals', 'Felis catus', 6736, 'CNC'),
-('Birds', 'Turdus migratorius', 11195, 'CNC'),
-('Amphibians', 'Lithobates catesbeianus', 8776, 'CNC'),
--- ('Fish', 'Oncorhynchus mykiss', 36953, 'CNC'),
--- ('Insects', 'Apis mellifera', 1053578, 'CNC'),
--- ('Arachnids', 'Araneus diadematus', 95966, 'CNC'),
--- ('Crustaceans', 'Homarus americanus', 90820, 'CNC');
+('Mammals', 'Felis catus', 6736, 'CR'),
+('Birds', 'Turdus migratorius', 11195, 'EN'),
+('Amphibians', 'Lithobates catesbeianus', 8776, 'CR');
+
 
 -- individuals
+-- 2 for each species
+INSERT INTO individuals (individual_nickname, species_id) VALUES
+-- Mammals
+('Bear Bear', (SELECT id FROM species WHERE common_name = 'Mammals')),
+('Dolphieeeee', (SELECT id FROM species WHERE common_name = 'Mammals')),
+-- Birds
+('Floppy Dino', (SELECT id FROM species WHERE common_name = 'Birds')),
+('Tweet Tweet', (SELECT id FROM species WHERE common_name = 'Birds')),
+-- Amphibians
+('Camo Crawly', (SELECT id FROM species WHERE common_name = 'Amphibians')),
+('Frogity frog frog', (SELECT id FROM species WHERE common_name = 'Amphibians'));
+
 -- sightings
