@@ -45,19 +45,25 @@ This app is going to help scientists track sightings of endangered animals. Ther
 CREATE USER username WITH PASSWORD 'password';
 GRANT ALL PRIVILEGES ON DATABASE endangered-animals-sightings-db TO username;
 ```
-9. To make sure that you can run the app `npm run dev`
+10. To use pg_dump
+`pg_dump -U username -d sightingsDB -f your_path_to_my_database/db.sql`
+-U is your username in psql
+-d is database which is sightingsDB
+-f is the path to the db.sql
+
+11. To make sure that you can run the app `npm run dev`
 
 ## MY JOURNEY <a name="journey"></a>
 - [x] Create app using REACT / VITE / [JEST](https://gist.github.com/wk642/502cf733b63686c07140e9a84631edc4)
-- [ ] Install the following
+- [x] Install the following
   - [x] npm
   - [x] express
   - [x] nodemon
   - [x] concurrently
   - [x] cors
-- [ ] Have a pg_dump file named db.js set up
+- [x] Have a pg_dump file named db.js set up
 
-- [ ] DATA SCHEMAS: 
+- [x] DATA SCHEMAS: 
 
 | SPIECES | INDIVIDUALS | SIGHTINGS|
 | --- | --- | ---|
@@ -69,20 +75,20 @@ GRANT ALL PRIVILEGES ON DATABASE endangered-animals-sightings-db TO username;
 | `created_at` : timestamp [ (p) ] with time zone | |`sighter_email` : VARCHAR |
 | | | `created_at` : timestamp [ (p) ] with time zone |
 
-- [ ] Base database will have at least: 
-  - [ ] 3 animal species 
-  - [ ] 2 individuals of each species
-  - [ ] least 5 animal sightings.
+- [x] Base database will have at least: 
+  - [x] 3 animal species 
+  - [x] 2 individuals of each species
+  - [x] least 5 animal sightings.
 
-- [ ] Components:
-  - [ ] NewSightingForm
-  - [ ] NewIndividualForm
-  - [ ] NewSpeiciesForm
+- [x] Components:
+  - [x] NewSightingForm
+  - [x] NewIndividualForm
+  - [x] NewSpeiciesForm
 
-- [ ] Routes:
-  - [ ] GET - displaying data
-  - [ ] POST - when adding from forms
-  - [ ] DELETE
+- [x] Routes:
+  - [x] GET - displaying data
+  - [x] POST - when adding from forms
+  - [x] DELETE
 
 ## NICE TO HAVES <a name="nice"></a>
 
