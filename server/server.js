@@ -31,6 +31,15 @@ app.get('/species', async (req,res) => {
 })
 
 // display all the individuals
+app.get('/individuals', async (req,res) => {
+  try {
+    const individuals = await db.any('SELECT * FROM individuals');
+    res.json(individuals);
+  } catch (error) {
+    console.error("Error in getting all the individuals");
+    res.status(500).json({error:'Error in getting all the individuals'})
+  }
+})
 
 // display all the sightings
 
