@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function AddIndividualForm({ individualAdded }) {
   const [individualNickname, setIndividualNickname] = useState('');
-  const [selectedSpeciesName, setSelectedSpeciesName] = useState('');
+  const [selectedSpeciesId, setSelectedSpeciesId] = useState('');
   const [speciesList, setSpeciesList] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ function AddIndividualForm({ individualAdded }) {
 
     try {
       const selectedSpecies = speciesList.find(
-        (species) => species.common_name === selectedSpeciesName
+        (species) => species.id === selectedSpeciesId
       );
 
       // see what is being returned, maybe this is why it's not working
@@ -34,21 +34,18 @@ function AddIndividualForm({ individualAdded }) {
         alert('Please select a species.');
         return;
       }
+      var newIndividual = {individual_nickname: individualNickname,
+      species_id: selectedSpecies.id};
 
-      console.log("Submitting:", {
-        individual_nickname: individualNickname,
-        species_id: selectedSpecies.species_id,
-      });
+      // see what is going through
+      console.log("Submitting:", newIndividual);
 
       const response = await fetch('http://localhost:5000/individuals', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          individual_nickname: individualNickname,
-          species_id: selectedSpecies.species_id,
-        }),
+        body: JSON.stringify(newIndividual),
       });
 
       console.log("Response:", response); 
@@ -56,7 +53,7 @@ function AddIndividualForm({ individualAdded }) {
       if (response.ok) {
         alert('Individual added successfully!');
         setIndividualNickname('');
-        setSelectedSpeciesName('');
+        setSelectedSpeciesId('');
         individualAdded();  
       } else {
         alert('Failed to add individual.');
@@ -82,14 +79,14 @@ function AddIndividualForm({ individualAdded }) {
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2">Species:</label>
         <select
-          value={selectedSpeciesName}
-          onChange={(e) => setSelectedSpeciesName(e.target.value)}
+          value={selectedSpeciesId}
+          onChange={(e) => setSelectedSpeciesId(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           required
         >
           <option value="">Select Species</option>
           {speciesList.map((species) => (
-            <option key={species.species_id} value={species.common_name}>
+            <option key={species.id} value={species.id}>
               {species.common_name}
             </option>
           ))}

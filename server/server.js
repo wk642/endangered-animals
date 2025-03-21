@@ -97,7 +97,7 @@
     }
   });
 
-  // add inndividuals - POST
+  // add individuals - POST
   app.post('/individuals', async (req, res) => {
     try {
       const { individual_nickname, species_id} = req.body;
@@ -109,6 +109,35 @@
     } catch (error) {
       console.error(error); 
       res.status(500).json({ error: 'Unable to add individual' });
+    }
+  });
+
+  // add sightings - POST
+  app.post('/sightings', async (req, res) => {
+    try {
+      const {
+        sighting_date_time,
+        sighted_animal_id,
+        animal_health,
+        sighter_email,
+        sighted_location,
+      } = req.body;
+  
+      await db.any(
+        'INSERT INTO sightings (sighting_date_time, sighted_animal_id, animal_health, sighter_email, sighted_location) VALUES ($1, $2, $3, $4, $5)',
+        [
+          sighting_date_time,
+          sighted_animal_id,
+          animal_health,
+          sighter_email,
+          sighted_location,
+        ]
+      );
+  
+      res.status(200).send('Sighting added successfully');
+    } catch (error) {
+      console.error('Error adding sighting:', error);
+      res.status(500).json({ error: 'Unable to add sighting' });
     }
   });
 
