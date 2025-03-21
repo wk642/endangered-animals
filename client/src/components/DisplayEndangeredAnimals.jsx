@@ -73,6 +73,51 @@ function DisplayEndangeredAnimals() {
     fetchData();
     setShowAddIndividualForm(false);
   };
+    
+  // handle deleting species
+  const handleDeleteSpecies = async (deleteSpeciesId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/species/${deleteSpeciesId}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting species:', error);
+    }
+  };
+  
+  // handle deleting individuals
+  const handleDeleteIndividuals = async (deleteIndividualsId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/individuals/${deleteIndividualsId}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting species:', error);
+    }
+  };
+
+  // handle deleting sighting
+  const handleDeleteSighting = async (deleteSightingId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/sightings/${deleteSightingId}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting species:', error);
+    }
+  };
 
   return (
     <div>
@@ -83,7 +128,7 @@ function DisplayEndangeredAnimals() {
       > Add Species</button>
 
       {/* Species Form (conditionally rendered) */}
-      {showAddSpeciesForm && <AddSpeciesForm speciesAdded={handleSpeciesAdded}/>}
+      {showAddSpeciesForm && <AddSpeciesForm speciesAdded={handleSpeciesAdded} />}
 
       {/* Button to Add Individual Form */}
       <button
@@ -97,19 +142,19 @@ function DisplayEndangeredAnimals() {
       {/* Species section */}
       <section className="mb-8">
         <h2 className="text-3xl font-semibold mb-6 underline">Species</h2>
-        <SpeciesCard species={species} />
+        <SpeciesCard species={species} speciesDeleted={handleDeleteSpecies} />
       </section>
 
       {/* Individuals section */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 underline">Individuals</h2>
-        <IndividualCard individuals={individuals} />
+        <IndividualCard individuals={individuals} individualDeleted={handleDeleteIndividuals}/>
       </section>
 
       {/* Sightings section */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 underline">Sightings</h2>
-        <SightingCard sightings={sightings} />
+        <SightingCard sightings={sightings} sightingDeleted={handleDeleteSighting}/>
       </section>
     </div>
   );
