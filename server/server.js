@@ -123,7 +123,7 @@
         sighted_location,
       } = req.body;
   
-      await db.any(
+      await db.none(
         'INSERT INTO sightings (sighting_date_time, sighted_animal_id, animal_health, sighter_email, sighted_location) VALUES ($1, $2, $3, $4, $5)',
         [
           sighting_date_time,

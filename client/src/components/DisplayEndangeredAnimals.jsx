@@ -107,9 +107,9 @@ function DisplayEndangeredAnimals() {
   };
   
   // handle deleting individuals
-  const handleDeleteIndividuals = async (deleteIndividualsId) => {
+  const handleDeleteIndividual = async (deleteIndividualId) => {
     try {
-      const response = await fetch(`http://localhost:5000/individuals/${deleteIndividualsId}`, {
+      const response = await fetch(`http://localhost:5000/individuals/${deleteIndividualId}`, {
         method: 'DELETE',
       });
 
@@ -175,7 +175,7 @@ function DisplayEndangeredAnimals() {
       {/* Individuals section */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 underline">Individuals</h2>
-        <IndividualCard individuals={individuals} individualDeleted={handleDeleteIndividuals}/>
+        <IndividualCard individuals={individuals} individualDeleted={handleDeleteIndividual}/>
       </section>
 
       {/* Sightings section */}
