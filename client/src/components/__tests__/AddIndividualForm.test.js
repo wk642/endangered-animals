@@ -9,10 +9,12 @@ describe('Add indivdual forms functionality', () => {
     render(<AddIndividualForm />)
 
     await waitFor(() => {
-      const screenEldment = screen.getByLabelText('Nickname:');
-      expect(screenEldment).toBeInTheDocument();
-      const speciesElement = screen.getByLabelText('Species:');
-      expect(speciesElement).toBeInTheDocument();
+      // const screenEldment = screen.getByLabelText('Nickname:');
+      expect(screen.getByLabelText('Nickname:')).toBeInTheDocument();
+      // const speciesElement = screen.getByLabelText('Species:');
+      expect(screen.getByLabelText('Species:')).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /Add Individual/i })).toBeInTheDocument();
+      
     });
   });
 });
