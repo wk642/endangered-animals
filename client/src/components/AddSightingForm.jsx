@@ -62,8 +62,9 @@ function AddSightingForm({ sightingAdded }) {
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto">
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Date/Time:</label>
+        <label htmlFor="sightingDateTime" className="block text-gray-700 text-sm font-bold mb-2">Date/Time:</label>
         <input
+          id="sightingDateTime"
           type="datetime-local"
           value={sightingDateTime}
           onChange={(e) => setSightingDateTime(e.target.value)}
@@ -72,8 +73,9 @@ function AddSightingForm({ sightingAdded }) {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Animal:</label>
+        <label htmlFor="Animal" className="block text-gray-700 text-sm font-bold mb-2">Animal:</label>
         <select
+          id="Animal"
           value={sightedAnimalId}
           onChange={(e) => setSightedAnimalId(e.target.value)}
           required
@@ -88,8 +90,9 @@ function AddSightingForm({ sightingAdded }) {
         </select>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Health:</label>
+        <label htmlFor="Health" className="block text-gray-700 text-sm font-bold mb-2">Health:</label>
         <select
+          id="Health"
           value={animalHealth}
           onChange={(e) => setAnimalHealth(e.target.value === 'true')}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -99,8 +102,9 @@ function AddSightingForm({ sightingAdded }) {
         </select>
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Sighter Email:</label>
+        <label htmlFor="Sighter Email" className="block text-gray-700 text-sm font-bold mb-2">Sighter Email:</label>
         <input
+          id="Sighter Email"
           type="email"
           value={sighterEmail}
           onChange={(e) => setSighterEmail(e.target.value)}
@@ -109,8 +113,9 @@ function AddSightingForm({ sightingAdded }) {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Location:</label>
+        <label htmlFor="location" className="block text-gray-700 text-sm font-bold mb-2">Location:</label>
         <input
+          id="location"
           type="text"
           value={sightedLocation}
           onChange={(e) => setSightedLocation(e.target.value)}
@@ -119,6 +124,7 @@ function AddSightingForm({ sightingAdded }) {
         />
       </div>
       <button
+        id="Add Sighting"
         type="submit"
         className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
       >
