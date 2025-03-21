@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 function AddIndividualForm({ individualAdded }) {
+  // setting the states
   const [individualNickname, setIndividualNickname] = useState('');
   const [selectedSpeciesId, setSelectedSpeciesId] = useState('');
   const [speciesList, setSpeciesList] = useState([]);
