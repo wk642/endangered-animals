@@ -68,8 +68,9 @@ function AddIndividualForm({ individualAdded }) {
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto">
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Nickname:</label>
+        <label htmlFor="nicknameInput" className="block text-gray-700 text-sm font-bold mb-2">Nickname:</label>
         <input
+          id="nicknameInput"
           type="text"
           value={individualNickname}
           onChange={(e) => setIndividualNickname(e.target.value)}
@@ -78,8 +79,9 @@ function AddIndividualForm({ individualAdded }) {
         />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2">Species:</label>
+        <label htmlFor="speciesSelect" className="block text-gray-700 text-sm font-bold mb-2">Species:</label>
         <select
+          id="speciesSelect"
           value={selectedSpeciesId}
           onChange={(e) => setSelectedSpeciesId(e.target.value)}
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
