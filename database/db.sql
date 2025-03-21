@@ -67,7 +67,8 @@ CREATE TABLE public.sightings (
     sighted_animal_id uuid,
     animal_health boolean,
     sighter_email character varying(255),
-    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP
+    created_at timestamp without time zone DEFAULT CURRENT_TIMESTAMP,
+    sighted_location text
 );
 
 
@@ -107,12 +108,12 @@ aa39ebef-d213-463d-b061-7d4fb35d937c	Tweet Tweet	1f33ba2d-edc7-4316-9e7b-a6db486
 -- Data for Name: sightings; Type: TABLE DATA; Schema: public; Owner: tpl622_6
 --
 
-COPY public.sightings (id, sighting_date_time, sighted_animal_id, animal_health, sighter_email, created_at) FROM stdin;
-a7c09405-b229-4f82-bf0c-2e693c8a702f	2025-02-02 09:43:00	0108462f-2f6e-4848-aaff-841796dc51d9	t	scientist1@sightings.com	2025-03-20 11:13:08.325221
-42040924-0e0c-4087-8fbe-4633c419353a	2025-02-19 12:36:00	4b94d052-134d-4e94-a8d1-cf6f3b52834f	t	scientist1@sightings.com	2025-03-20 11:13:08.325221
-d4e0dbf0-cfbb-4913-9ac1-b214733faa5e	2025-03-02 18:12:00	92a3578b-b78b-41e9-b362-e3653dd9bf01	f	scientist2@sightings.com	2025-03-20 11:13:08.325221
-2aab7a57-7908-4622-b0b9-1e75527065a7	2025-03-06 20:16:00	dfd2c7da-5021-4e35-8432-cecd25c31a71	t	scientist3@sightings.com	2025-03-20 11:13:08.325221
-0fb67cac-ea2d-4e2b-aad8-5826a00479e2	2025-03-17 07:03:00	aa39ebef-d213-463d-b061-7d4fb35d937c	t	scientist4@sightings.com	2025-03-20 11:13:08.325221
+COPY public.sightings (id, sighting_date_time, sighted_animal_id, animal_health, sighter_email, created_at, sighted_location) FROM stdin;
+a7c09405-b229-4f82-bf0c-2e693c8a702f	2025-02-02 09:43:00	0108462f-2f6e-4848-aaff-841796dc51d9	t	scientist1@sightings.com	2025-03-20 11:13:08.325221	Yellow Stone National Park
+42040924-0e0c-4087-8fbe-4633c419353a	2025-02-19 12:36:00	4b94d052-134d-4e94-a8d1-cf6f3b52834f	t	scientist1@sightings.com	2025-03-20 11:13:08.325221	35.8452° N, 86.3952° W
+d4e0dbf0-cfbb-4913-9ac1-b214733faa5e	2025-03-02 18:12:00	92a3578b-b78b-41e9-b362-e3653dd9bf01	f	scientist2@sightings.com	2025-03-20 11:13:08.325221	Bostonn, MA
+2aab7a57-7908-4622-b0b9-1e75527065a7	2025-03-06 20:16:00	dfd2c7da-5021-4e35-8432-cecd25c31a71	t	scientist3@sightings.com	2025-03-20 11:13:08.325221	Atlannta GA
+0fb67cac-ea2d-4e2b-aad8-5826a00479e2	2025-03-17 07:03:00	aa39ebef-d213-463d-b061-7d4fb35d937c	t	scientist4@sightings.com	2025-03-20 11:13:08.325221	Smokey Mountains
 \.
 
 
