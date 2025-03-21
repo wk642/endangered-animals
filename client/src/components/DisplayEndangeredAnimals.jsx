@@ -5,6 +5,7 @@ import SightingCard from './SightingCard';
 import AddSpeciesForm from './AddSpeciesForm';
 import AddIndividualForm from './AddIndividualForm';
 import AddSightingForm from './AddSightingForm';
+import DisplayByHealth from './displayByHealth';
 
 function DisplayEndangeredAnimals() {
   // set states
@@ -183,6 +184,10 @@ function DisplayEndangeredAnimals() {
         <h2 className="text-2xl font-semibold mb-4 underline">Sightings</h2>
         <SightingCard sightings={sightings} sightingDeleted={handleDeleteSighting}/>
       </section>
+
+       {/* Display by health */}
+       <DisplayByHealth sightings={sightings} individuals={individuals}/>
+
     </div>
   );
 }
