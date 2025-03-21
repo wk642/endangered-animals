@@ -61,6 +61,8 @@ GRANT ALL PRIVILEGES ON DATABASE endangered-animals-sightings-db TO username;
   - [x] nodemon
   - [x] concurrently
   - [x] cors
+  - [x] pg promise
+  - [x] tailwind
 - [x] Have a pg_dump file named db.js set up
 
 - [x] DATA SCHEMAS: 
