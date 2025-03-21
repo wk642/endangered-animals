@@ -26,6 +26,7 @@ This app is going to help scientists track sightings of endangered animals. Ther
 - [ ] testing
 - [ ] SQL
 ## DEMO <a name="demo"></a>
+![endangeredAnimalsSightingsTrackerDemo](https://github.com/user-attachments/assets/8ae38f97-caef-421b-b408-a0fd46b47481)
 
 ## SETUP INSTRUCTIONS <a name="setup"></a>
 1. In your terminal `cd` into the location you want to clone my project in
