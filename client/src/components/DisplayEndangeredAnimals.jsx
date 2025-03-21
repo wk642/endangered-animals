@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SpeciesCard from './SpeciesCard';
 import IndividualCard from './IndividualCard';
 import SightingCard from './SightingCard';
+import AddSpeciesForm from './AddSpeciesForm';
 
 function DisplayEndangeredAnimals() {
   // set states
@@ -10,29 +11,35 @@ function DisplayEndangeredAnimals() {
   const [sightings, setSightings] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showAddSpeciesForm, setShowAddSpeciesForm] = useState(false);
+
+  // handling the forms being shown or not.
+  const toggleAddSpeciesForm = () => {
+    setShowAddSpeciesForm(!showAddSpeciesForm);
+  };
+
+  async function fetchData() {
+    try {
+      // fetchinig the data
+      const fetchSpecies = await fetch('http://localhost:5000/species');
+      const fetchIndividuals = await fetch('http://localhost:5000/individuals');
+      const fetchSightings = await fetch('http://localhost:5000/sightings');
+
+      const speciesData = await fetchSpecies.json();
+      const individualsData = await fetchIndividuals.json();
+      const sightingsData = await fetchSightings.json();
+
+      setSpecies(speciesData);
+      setIndividuals(individualsData);
+      console.log(setSightings(sightingsData));
+      setLoading(false);
+    } catch (err) {
+      setError(err);
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
-    async function fetchData() {
-      try {
-        // fetchinig the data
-        const fetchSpecies = await fetch('http://localhost:5000/species');
-        const fetchIndividuals = await fetch('http://localhost:5000/individuals');
-        const fetchSightings = await fetch('http://localhost:5000/sightings');
-
-        const speciesData = await fetchSpecies.json();
-        const individualsData = await fetchIndividuals.json();
-        const sightingsData = await fetchSightings.json();
-
-        setSpecies(speciesData);
-        setIndividuals(individualsData);
-        console.log(setSightings(sightingsData));
-        setLoading(false);
-      } catch (err) {
-        setError(err);
-        setLoading(false);
-      }
-    }
-
     fetchData();
   }, []);
 
@@ -44,8 +51,23 @@ function DisplayEndangeredAnimals() {
     return <p>Error: {error.message}</p>;
   }
 
+  // handle the add species 
+  const handleSpeciesAdded = () => {
+    // refresh the page automatically update and display
+    fetchData();
+    setShowAddSpeciesForm(false);
+  };
   return (
     <div>
+      {/* Button to Add Species Form */}
+      <button
+        onClick={toggleAddSpeciesForm}
+        className="bg-sky-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+      > Add Species</button>
+
+      {/* Species Form (conditionally rendered) */}
+      {showAddSpeciesForm && <AddSpeciesForm speciesAdded={handleSpeciesAdded}/>}
+
       {/* Species section */}
       <section className="mb-8">
         <h2 className="text-3xl font-semibold mb-6 underline">Species</h2>

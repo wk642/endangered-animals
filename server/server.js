@@ -81,6 +81,22 @@
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+  
+  // add species - POST
+  app.post('/species', async (req, res) => {
+    try {
+      const { common_name, scientific_name, species_population, conservation_code } = req.body;
+      await db.none(
+        'INSERT INTO species (common_name, scientific_name, species_population, conservation_code) VALUES ($1, $2, $3, $4)',
+        [common_name, scientific_name, species_population, conservation_code]
+      );
+      res.status(200).send('Species added successfully');
+    } catch (error) {
+      console.error('Error adding species:', error);
+      res.status(500).json({ error: 'Unable to add species' });
+    }
+  });
+
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
