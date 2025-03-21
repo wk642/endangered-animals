@@ -37,7 +37,7 @@ function AddIndividualForm({ individualAdded }) {
 
       console.log("Submitting:", {
         individual_nickname: individualNickname,
-        species_id: selectedSpecies.species_id,
+        species_id: selectedSpecies.id,
       });
 
       const response = await fetch('http://localhost:5000/individuals', {

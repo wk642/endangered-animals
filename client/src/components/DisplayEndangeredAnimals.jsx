@@ -38,7 +38,8 @@ function DisplayEndangeredAnimals() {
 
       setSpecies(speciesData);
       setIndividuals(individualsData);
-      console.log(setSightings(sightingsData));
+      console.dir("dir: ", individualsData);
+      console.table("table ", individualsData)
       setLoading(false);
     } catch (err) {
       setError(err);
