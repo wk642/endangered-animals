@@ -74,6 +74,25 @@ function DisplayEndangeredAnimals() {
     setShowAddIndividualForm(false);
   };
 
+  // handle deleting species
+  const handleDeleteSpecies = async (deleteSpeciesId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/species/${deleteSpeciesId}`, {
+        method: 'DELETE',
+      });
+
+      // if (!response.ok) {
+      //   throw new Error('Failed to delete species');
+      // }
+
+      const data = await response.json();
+      console.log(data.message);
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting species:', error);
+    }
+  };
+
   return (
     <div>
       {/* Button to Add Species Form */}
@@ -83,7 +102,7 @@ function DisplayEndangeredAnimals() {
       > Add Species</button>
 
       {/* Species Form (conditionally rendered) */}
-      {showAddSpeciesForm && <AddSpeciesForm speciesAdded={handleSpeciesAdded}/>}
+      {showAddSpeciesForm && <AddSpeciesForm speciesAdded={handleSpeciesAdded} />}
 
       {/* Button to Add Individual Form */}
       <button
@@ -97,7 +116,7 @@ function DisplayEndangeredAnimals() {
       {/* Species section */}
       <section className="mb-8">
         <h2 className="text-3xl font-semibold mb-6 underline">Species</h2>
-        <SpeciesCard species={species} />
+        <SpeciesCard species={species} speciesDeleted={handleDeleteSpecies} />
       </section>
 
       {/* Individuals section */}

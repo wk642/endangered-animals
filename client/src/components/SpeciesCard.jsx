@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SpeciesCards({ species }) {
+function SpeciesCard({ species, speciesDeleted }) {
   return (
     <div className="text-left grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {species.map((species) => (
@@ -8,9 +8,9 @@ function SpeciesCards({ species }) {
            {/* Add delete button for every card */}
            <button
             onClick={() => {
-              if (onDelete) {
-                onDelete(species.id);
-              }
+              // if (speciesDeleted) {
+                speciesDeleted(species.id);
+              // }
             }}
             className="absolute top-2 right-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs"
           >
@@ -28,5 +28,5 @@ function SpeciesCards({ species }) {
   );
 }
 
-export default SpeciesCards;
+export default SpeciesCard;
 
