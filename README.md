@@ -45,13 +45,15 @@ This app is going to help scientists track sightings of endangered animals. Ther
 CREATE USER username WITH PASSWORD 'password';
 GRANT ALL PRIVILEGES ON DATABASE endangered-animals-sightings-db TO username;
 ```
-10. To use pg_dump
+10. To use pg_dump (this is for me, not for the user)
 `pg_dump -U username -d sightingsDB -f your_path_to_my_database/db.sql`
 -U is your username in psql
 -d is database which is sightingsDB
 -f is the path to the db.sql
+11. To use it as a user
+`pg_restore -U username -f your_path_to_my_database/db.sql`
 
-11. To make sure that you can run the app `npm run dev`
+12. To make sure that you can run the app `npm run dev`
 
 ## MY JOURNEY <a name="journey"></a>
 - [x] Create app using REACT / VITE / [JEST](https://gist.github.com/wk642/502cf733b63686c07140e9a84631edc4)
@@ -95,6 +97,7 @@ GRANT ALL PRIVILEGES ON DATABASE endangered-animals-sightings-db TO username;
 ## SPIKE DOC <a name="spike"></a>
 - [ ] readme table style does not work on github
 - [ ] does psql database come with automatic timestamps already
+- [ ] why does name not show for dsplay by health
 
 <style>
   table{
