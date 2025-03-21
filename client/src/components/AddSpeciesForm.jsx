@@ -48,6 +48,7 @@ function AddSpeciesForm({ speciesAdded }) {
           type="text"
           value={commonName}
           onChange={(e) => setCommonName(e.target.value)}
+          required
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
@@ -57,6 +58,7 @@ function AddSpeciesForm({ speciesAdded }) {
           type="text"
           value={scientificName}
           onChange={(e) => setScientificName(e.target.value)}
+          required
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
@@ -66,6 +68,7 @@ function AddSpeciesForm({ speciesAdded }) {
           type="number"
           value={speciesPopulation}
           onChange={(e) => setSpeciesPopulation(e.target.value)}
+          required
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
@@ -75,6 +78,7 @@ function AddSpeciesForm({ speciesAdded }) {
           type="text"
           value={conservationCode}
           onChange={(e) => setConservationCode(e.target.value)}
+          required
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
