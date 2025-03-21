@@ -97,7 +97,7 @@
     }
   });
 
-  // add inndividuals - POST
+  // add individuals - POST
   app.post('/individuals', async (req, res) => {
     try {
       const { individual_nickname, species_id} = req.body;
@@ -109,6 +109,35 @@
     } catch (error) {
       console.error(error); 
       res.status(500).json({ error: 'Unable to add individual' });
+    }
+  });
+
+  // add sightings - POST
+  app.post('/sightings', async (req, res) => {
+    try {
+      const {
+        sighting_date_time,
+        sighted_animal_id,
+        animal_health,
+        sighter_email,
+        sighted_location,
+      } = req.body;
+  
+      await db.none(
+        'INSERT INTO sightings (sighting_date_time, sighted_animal_id, animal_health, sighter_email, sighted_location) VALUES ($1, $2, $3, $4, $5)',
+        [
+          sighting_date_time,
+          sighted_animal_id,
+          animal_health,
+          sighter_email,
+          sighted_location,
+        ]
+      );
+  
+      res.status(200).send('Sighting added successfully');
+    } catch (error) {
+      console.error('Error adding sighting:', error);
+      res.status(500).json({ error: 'Unable to add sighting' });
     }
   });
 
@@ -145,12 +174,12 @@
 
  // delete sightings by getting the id when button is clicked
  app.delete('/sightings/:id', async (req, res) => {
-  const deleteSightingsId = req.params.id;
+  const deleteSightingId = req.params.id;
   // check to see if what I'm passing is working
-  console.log(`paramsId`, deleteSightingsId); 
+  console.log(`paramsId`, deleteSightingId); 
 
   try {
-    await db.any('DELETE FROM sightings WHERE id = $1', [deleteSightingsId]); 
+    await db.any('DELETE FROM sightings WHERE id = $1', [deleteSightingId]); 
     res.status(200).json({ message: 'Individual deleted successfully' });
   } catch (error) {
     console.error('Error deleting sightings:', error); 

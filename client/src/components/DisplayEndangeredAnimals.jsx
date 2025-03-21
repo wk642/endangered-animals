@@ -4,6 +4,7 @@ import IndividualCard from './IndividualCard';
 import SightingCard from './SightingCard';
 import AddSpeciesForm from './AddSpeciesForm';
 import AddIndividualForm from './AddIndividualForm';
+import AddSightingForm from './AddSightingForm';
 
 function DisplayEndangeredAnimals() {
   // set states
@@ -14,6 +15,7 @@ function DisplayEndangeredAnimals() {
   const [error, setError] = useState(null);
   const [showAddSpeciesForm, setShowAddSpeciesForm] = useState(false);
   const [showAddIndividualForm, setShowAddIndividualForm] = useState(false);
+  const [showAddSightingForm, setShowAddSightingForm] = useState(false);
 
   // handling the forms being shown or not.
   // Add species
@@ -25,6 +27,12 @@ function DisplayEndangeredAnimals() {
   const toggleAddIndividualForm = () => {
     setShowAddIndividualForm(!showAddIndividualForm);
   };
+  
+  // Add sighting
+  const toggleAddSightingForm = () => {
+    setShowAddSightingForm(!showAddSightingForm);
+  };
+
   async function fetchData() {
     try {
       // fetchinig the data
@@ -65,13 +73,22 @@ function DisplayEndangeredAnimals() {
     setShowAddSpeciesForm(false);
   };
 
-  // handle the add species 
+  // handle the add individual 
     const handleIndividualAdded = () => {
     // not reloading and displaying , so checking ot make sure it is getting here
      console.log('handleIndividualAdded called'); 
     // refresh the page automatically update and display
     fetchData();
     setShowAddIndividualForm(false);
+  };
+
+  // handle the add sighting 
+    const handleSightingAdded = () => {
+    // not reloading and displaying , so checking ot make sure it is getting here
+     console.log('handleSightingAdded called'); 
+    // refresh the page automatically update and display
+    fetchData();
+    setShowAddSightinglForm(false);
   };
     
   // handle deleting species
@@ -90,9 +107,9 @@ function DisplayEndangeredAnimals() {
   };
   
   // handle deleting individuals
-  const handleDeleteIndividuals = async (deleteIndividualsId) => {
+  const handleDeleteIndividual = async (deleteIndividualId) => {
     try {
-      const response = await fetch(`http://localhost:5000/individuals/${deleteIndividualsId}`, {
+      const response = await fetch(`http://localhost:5000/individuals/${deleteIndividualId}`, {
         method: 'DELETE',
       });
 
@@ -136,8 +153,18 @@ function DisplayEndangeredAnimals() {
         className="bg-sky-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
       > Add Individual</button>
 
-      {/* Species Form (conditionally rendered) */}
+      {/* Individual Form (conditionally rendered) */}
       {showAddIndividualForm && <AddIndividualForm individualAdded={handleIndividualAdded}/>}
+
+
+      {/* Button to Add Sighting Form */}
+      <button
+        onClick={toggleAddSightingForm}
+        className="bg-sky-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+      > Add Sighting</button>
+
+      {/* Sighting Form (conditionally rendered) */}
+      {showAddSightingForm && <AddSightingForm sightingAdded={handleSightingAdded}/>}
 
       {/* Species section */}
       <section className="mb-8">
@@ -148,7 +175,7 @@ function DisplayEndangeredAnimals() {
       {/* Individuals section */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 underline">Individuals</h2>
-        <IndividualCard individuals={individuals} individualDeleted={handleDeleteIndividuals}/>
+        <IndividualCard individuals={individuals} individualDeleted={handleDeleteIndividual}/>
       </section>
 
       {/* Sightings section */}
