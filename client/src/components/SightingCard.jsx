@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SightingCard({ sightings }) {
+function SightingCard({ sightings, sightingDeleted }) {
   //Displaying all the sightings
   // animal name would be a join
   return (
@@ -8,11 +8,11 @@ function SightingCard({ sightings }) {
       {sightings.map((sighting) => (
         <div key={sighting.id} className="relative bg-green-300 rounded-lg p-4">
            {/* Add delete button for every card */}
-           <button
+          <button
             onClick={() => {
-              if (onDelete) {
-                onDelete(individual.id);
-              }
+              // if (speciesDeleted) {
+                sightingDeleted(sightings.id);
+              // }
             }}
             className="absolute top-2 right-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs"
           >

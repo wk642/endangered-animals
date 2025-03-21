@@ -104,6 +104,21 @@ function DisplayEndangeredAnimals() {
     }
   };
 
+  // handle deleting sighting
+  const handleDeleteSighting = async (deleteSightingId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/sightings/${deleteSightingId}`, {
+        method: 'DELETE',
+      });
+
+      const data = await response.json();
+      console.log(data.message);
+      fetchData();
+    } catch (error) {
+      console.error('Error deleting species:', error);
+    }
+  };
+
   return (
     <div>
       {/* Button to Add Species Form */}
@@ -139,7 +154,7 @@ function DisplayEndangeredAnimals() {
       {/* Sightings section */}
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 underline">Sightings</h2>
-        <SightingCard sightings={sightings} />
+        <SightingCard sightings={sightings} sightingDeleted={handleDeleteSighting}/>
       </section>
     </div>
   );

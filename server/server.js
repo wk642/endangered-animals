@@ -143,7 +143,20 @@
     }
   });
 
+ // delete sightings by getting the id when button is clicked
+ app.delete('/sightings/:id', async (req, res) => {
+  const deleteSightingsId = req.params.id;
+  // check to see if what I'm passing is working
+  console.log(`paramsId`, deleteSightingsId); 
 
+  try {
+    await db.any('DELETE FROM sightings WHERE id = $1', [deleteSightingsId]); 
+    res.status(200).json({ message: 'Individual deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting sightings:', error); 
+    res.status(500).json({ error: 'Unable to delete sightings' });
+  }
+});
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
