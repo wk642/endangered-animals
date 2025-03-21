@@ -3,6 +3,7 @@ import SpeciesCard from './SpeciesCard';
 import IndividualCard from './IndividualCard';
 import SightingCard from './SightingCard';
 import AddSpeciesForm from './AddSpeciesForm';
+import AddIndividualForm from './AddIndividualForm';
 
 function DisplayEndangeredAnimals() {
   // set states
@@ -12,12 +13,18 @@ function DisplayEndangeredAnimals() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showAddSpeciesForm, setShowAddSpeciesForm] = useState(false);
+  const [showAddIndividualForm, setShowAddIndividualForm] = useState(false);
 
   // handling the forms being shown or not.
+  // Add species
   const toggleAddSpeciesForm = () => {
     setShowAddSpeciesForm(!showAddSpeciesForm);
   };
 
+  // Add individual
+  const toggleAddIndividualForm = () => {
+    setShowAddIndividualForm(!showAddIndividualForm);
+  };
   async function fetchData() {
     try {
       // fetchinig the data
@@ -57,6 +64,16 @@ function DisplayEndangeredAnimals() {
     fetchData();
     setShowAddSpeciesForm(false);
   };
+
+  // handle the add species 
+    const handleIndividualAdded = () => {
+    // not reloading and displaying , so checking ot make sure it is getting here
+     console.log('handleIndividualAdded called'); 
+    // refresh the page automatically update and display
+    fetchData();
+    setShowAddIndividualForm(false);
+  };
+
   return (
     <div>
       {/* Button to Add Species Form */}
@@ -67,6 +84,15 @@ function DisplayEndangeredAnimals() {
 
       {/* Species Form (conditionally rendered) */}
       {showAddSpeciesForm && <AddSpeciesForm speciesAdded={handleSpeciesAdded}/>}
+
+      {/* Button to Add Individual Form */}
+      <button
+        onClick={toggleAddIndividualForm}
+        className="bg-sky-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
+      > Add Individual</button>
+
+      {/* Species Form (conditionally rendered) */}
+      {showAddIndividualForm && <AddIndividualForm individualAdded={handleIndividualAdded}/>}
 
       {/* Species section */}
       <section className="mb-8">

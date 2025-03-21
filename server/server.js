@@ -97,6 +97,21 @@
     }
   });
 
+  // add inndividuals - POST
+  app.post('/individuals', async (req, res) => {
+    try {
+      const { individual_nickname, species_id} = req.body;
+      await db.none(
+        'INSERT INTO individuals (individual_nickname, species_id) VALUES ($1, $2)',
+        [individual_nickname, species_id]
+      );
+      res.status(200).send('Individual added successfully');
+    } catch (error) {
+      console.error(error); 
+      res.status(500).json({ error: 'Unable to add individual' });
+    }
+  });
+
 
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
