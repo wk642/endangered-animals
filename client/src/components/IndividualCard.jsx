@@ -5,13 +5,13 @@ function IndividualCards({ individuals }) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {/* Display each individual animal  */}
       {individuals.map((individual) => (
-        <div key={individual.id} className="relative bg-yellow-300 rounded-lg p-4">
+        <div key={"individual.id"} className="relative bg-yellow-300 rounded-lg p-4">
           {/* Add delete button for every card */}
           <button
             onClick={() => {
-              if (onDelete) {
-                onDelete(individual.id);
-              }
+              // if (speciesDeleted) {
+                individualsDeleted(species.id);
+              // }
             }}
             className="absolute top-2 right-2 bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded text-xs"
           >

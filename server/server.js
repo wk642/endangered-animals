@@ -113,6 +113,38 @@
   });
 
 
+  // delete species by getting the id when button is clicked
+  app.delete('/species/:id', async (req, res) => {
+    const deleteSpeciesId = req.params.id;
+    // check to see if what I'm passing is working
+    console.log(`paramsId`, deleteSpeciesId); 
+  
+    try {
+      await db.any('DELETE FROM species WHERE id = $1', [deleteSpeciesId]); 
+      res.status(200).json({ message: 'Species deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting species:', error); 
+      res.status(500).json({ error: 'Unable to delete species' });
+    }
+  });
+
+   // delete individuals by getting the id when button is clicked
+   app.delete('/individuals/:id', async (req, res) => {
+    const deleteIndividualId = req.params.id;
+    // check to see if what I'm passing is working
+    console.log(`paramsId`, deleteIndividualId); 
+  
+    try {
+      await db.any('DELETE FROM individuals WHERE id = $1', [deleteIndividualId]); 
+      res.status(200).json({ message: 'Individual deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting individual:', error); 
+      res.status(500).json({ error: 'Unable to delete individual' });
+    }
+  });
+
+
+
   app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
